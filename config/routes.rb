@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # Uncomment the next line to set 'articles#index' as the root path of your application.
   # root "articles#index"
   
-  # Nested resources for authors and their books
-  resources :authors do
-    resources :books, only: [:index] # This will give a route for listing books of a specific author
+  # Nested resources for slugs and their books
+  resources :slugs do
+    resources :books, only: [:index] 
   end
   
   # Standard RESTful routes for books

@@ -11,23 +11,20 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_20_185015) do
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
-    t.text "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.text "description"
-    t.decimal "price"
-    t.date "published_date"
-    t.integer "author_id", null: false
+    t.string "uri"
+    t.integer "slug_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["slug_id"], name: "index_books_on_slug_id"
   end
 
-  add_foreign_key "books", "authors"
+  create_table "slugs", force: :cascade do |t|
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "books", "slugs"
 end
