@@ -36,6 +36,6 @@ class SlugsController < ApplicationController
       private
       
       def slug_params
-        params.require(:slug).permit(:name, :bio)
+        params.require(:slug).permit(:slug)
       end      
 end

@@ -35,12 +35,12 @@ class BooksController < ApplicationController
       
       def scrape_books
         BookScraper.scrape_and_populate
-        render json: { message: "Books and Authors populated successfully." }, status: :ok
+        render json: { message: "Books and Slugs populated successfully." }, status: :ok
       end   
       
       private
       
       def book_params
-        params.require(:book).permit(:title, :description, :price, :published_date, :author_id)
+        params.require(:book).permit(:title, :uri, :slug_id)
       end   
 end
