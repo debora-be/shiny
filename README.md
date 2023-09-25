@@ -1,24 +1,70 @@
-# README
+## Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Shiny Book** is a tool designed to manage and catalog books with unique identifiers known as slugs.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- `nix`
+- `direnv`
 
-* System dependencies
+## Setup & Installation
 
-* Configuration
+1. Install `nix` if you haven't already:
 
-* Database creation
+    ```bash
+    curl -L https://nixos.org/nix/install | sh
+    ```
 
-* Database initialization
+2. Navigate to the project directory:
 
-* How to run the test suite
+    ```bash
+    cd shiny
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Allow `direnv`:
 
-* Deployment instructions
+    ```bash
+    direnv allow
+    ```
 
-* ...
+4. Install necessary gems:
+
+    ```bash
+    bundle install
+    ```
+
+## Running the Application
+
+1. Start the Rails server:
+
+    ```bash
+    rails server
+    ```
+
+2. Navigate to the application in your browser or use `curl`:
+
+    - To scrape the URL and populate the database:
+    
+      ```bash
+      curl http://localhost:3000/scrape_books
+      ```
+
+    - To view the contents of the `slugs` table:
+
+      ```bash
+      curl -H "Accept: application/json" http://localhost:3000/slugs | jq
+      ```
+
+    - To view the contents of the `books` table:
+
+      ```bash
+      curl -H "Accept: application/json" http://localhost:3000/books | jq
+      ```
+
+## Testing
+
+Run the tests using:
+
+```bash
+rspec
+```
