@@ -10,7 +10,7 @@
   in {
 
     devShell.x86_64-linux = pkgs.mkShell {
-      buildInputs = [ ruby pkgs.bundler pkgs.zlib pkgs.xz ];  # Added pkgs.xz for LZMA
+      buildInputs = [ ruby pkgs.bundler pkgs.zlib pkgs.xz pkgs.jq ];  # Added pkgs.jq for JSON processing
       shellHook = ''
         echo "Welcome to the Ruby development environment!"
       '';
